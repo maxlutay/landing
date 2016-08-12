@@ -1,0 +1,429 @@
+html * {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    outline: none;
+}
+
+body * {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+}
+
+body {
+    width: 100vw;
+    overflow-x: hidden;
+    /*bug*/
+    /*developer*/
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+}
+
+body>* {
+    width: 100vw;
+    min-height: 10vh;
+    /*developer*/
+    background: yellow;
+    /*developer*/
+}
+
+.header {
+    height: 100vh;
+    color: white;
+    background: slategrey;
+}
+
+.header>.h-tile {
+    width: 80vw;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.h-tile>*:first-child {
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.h-tile>*:first-child .menu {
+    height: 70px;
+    width: 70px;
+    background: white;
+}
+
+.h-buttons {
+    justify-content: space-between;
+    width: 50%;
+    align-self: center;
+}
+
+.h-button {
+    min-width: 5vw;
+    background: transparent;
+}
+
+.h-button:hover {
+    background: darkorange;
+}
+
+.h-row>.p-motto {
+    text-align: center;
+}
+
+.services {
+    justify-content: center;
+    align-items: center;
+    background: white;
+    min-height: 60vh;
+    padding-top: 20vh;
+    padding-bottom: 20vh;
+}
+
+.s-tile {
+    width: 80vw;
+    height: 50%;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.s-tile>* {
+    width: 20%;
+}
+
+.s-col,
+.s-col * {
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.s-img {
+    height: auto;
+    width: 100%;
+}
+
+.subscribe {
+    background-color: slategrey;
+    min-height: 40vh;
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
+
+.subscribe>form {
+    justify-content: space-between;
+    width: 70vw;
+}
+
+.subscribe>form>* {
+    padding: 3vh;
+    border-radius: 10px;
+    font-size: 5vh;
+}
+
+.subscribe>form>input {
+    width: calc(70% - 2*10px);
+}
+
+.subscribe>form>button {
+    background: darkorange;
+    width: 25%;
+    color: white;
+}
+
+.works {
+    justify-content: center;
+    align-content: stretch;
+    padding-top: 20vh;
+    padding-bottom: 20vh;
+    background: white;
+}
+
+.w-tile {
+    flex-direction: column;
+    width: 80vw;
+    justify-content: space-between;
+}
+
+.w-grid {
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 70vh;
+}
+
+.w-text {
+    flex-direction: column;
+}
+
+.w-grid-example {
+    display: block;
+    width: 23vw;
+    height: 23vw;
+    margin: 20px;
+    overflow: hidden;
+}
+
+.w-grid-example>* {
+    display: block;
+    position: absolute;
+    width: 23vw;
+    height: 23vw;
+    border-radius: 10px;
+}
+
+.w-grid-example>.visible>* {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.w-grid-example>.hidden {
+    background: rgba(255, 127, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    z-index: 60;
+    opacity: 0;
+    transition: 1s;
+}
+
+.w-grid-example>.hidden>.h-in {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.g-e-btn {
+    margin-top: 20px;
+    display: block;
+    text-decoration: none;
+    padding: 20px;
+    border-radius: 10px;
+    background: white;
+    color: rgba(255, 127, 0, 0.75);
+}
+
+.w-grid-example:hover .hidden {
+    opacity: 1;
+}
+
+.w-head {
+    font-size: 1.5em;
+}
+
+.w-p {
+    text-align: center;
+    margin-bottom: 15vh;
+}
+
+.w-show-more {
+    margin-top: 15vh;
+}
+
+.w-show-more>* {
+    text-decoration: none;
+    color: slategrey;
+}
+
+.speeches {
+    justify-content: center;
+    align-items: center;
+    background: slategrey;
+}
+
+.sp-tile {
+    width: 60vw;
+    height: 70vh;
+    padding-top: 20vh;
+    padding-bottom: 20vh;
+    overflow: hidden;
+}
+
+.sp-slide {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    height: 100%;
+    width: 0;
+    transition: opacity 2s;
+}
+
+.sp-tile>.active {
+    width: 100%;
+    position: static;
+    display: flex;
+    opacity: 1;
+    transition: opacity 2s 0.1s, width 0s;
+}
+
+.sp-tile>.before {
+    transform: translateX(-100%);
+    transition: 0.5s;
+}
+
+.sp-tile>.after {
+    transform: translateX(100%);
+    transition: 0.5s;
+}
+
+.sp-slide>.sp-img {
+    width: 20vmin;
+    height: 20vmin;
+    margin-bottom: 10vh;
+    border-radius: 50%;
+}
+
+.sp-slide>.sp-p {
+    margin-bottom: 10vh;
+    width: 80%;
+}
+
+.sp-leftctrl,
+.sp-rightctrl {
+    z-index: 100;
+}
+
+.faces {
+    justify-content: center;
+    align-items: center;
+    background: white;
+    padding-top: 20vh;
+    padding-bottom: 20vh;
+}
+
+.f-tile {
+    width: 80vw;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+.f-text {
+    flex-direction: column;
+    align-self: center;
+    width: 50%;
+}
+
+.f-text>* {
+    text-align: center;
+}
+
+.f-blocks {
+    justify-content: space-around;
+    align-items: stretch;
+    min-height: 80vh;
+}
+
+.f-blocks>.f-block {
+    flex-direction: column;
+    padding: 25px;
+    align-items: center;
+    min-height: 60vh;
+    width: 20%;
+}
+
+.f-block * {
+    transition: 0.5s;
+}
+
+.f-block>*:not(.f-about) {
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+    width: 90%;
+    cursor: pointer;
+}
+
+.f-block:hover>* {
+    filter: none;
+    -webkit-filter: none;
+}
+
+.f-face {
+    height: 55vh;
+    align-items: flex-end;
+}
+
+.f-face>img {
+    width: 90%;
+    height: auto;
+    max-height: 75vh;
+    border-radius: 7px;
+}
+
+.f-block:hover .f-face {
+    width: 100%;
+}
+
+.f-block:hover .f-face>img {
+    max-height: 70vh;
+    border-bottom: 10px solid darkorange;
+}
+
+.f-name {
+    padding-top: 4vh;
+}
+
+.f-socials {
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+}
+
+.f-socials a:nth-child(1) .fa-circle {
+    color: #3B5998;
+}
+
+.f-socials a:nth-child(2) .fa-circle {
+    color: #4099FF;
+}
+
+.f-socials a:nth-child(3) .fa-circle {
+    color: #dd4b39;
+}
+
+.f-dots {
+    align-self: center;
+    justify-content: space-around;
+    align-items: center;
+    width: 20%;
+    height: 15px;
+    padding-top: 10vh;
+    padding-bottom: 5vh;
+}
+
+.f-dots>.dot {
+    height: 10px;
+    width: 10px;
+    background: lightgrey;
+    margin-left: 15px;
+    margin-right: 15px;
+    border-radius: 50%;
+}
+
+.f-dots>.dot:first-child {
+    margin-left: 12px;
+}
+
+.f-dots>.dot:last-child {
+    margin-right: 12px;
+}
+
+.f-dots>.active {
+    height: 13px;
+    width: 13px;
+    background: darkorange;
+    margin-left: 12px;
+    margin-right: 12px;
+    border-radius: 50%;
+}
+
+
+/*
+C:\Program Files (x86)\ghc-8.0.1\bin;
+*/
