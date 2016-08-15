@@ -8,10 +8,72 @@ body * {
 }/*reset all*/
 
 
+/*
 
+                landing scheme
+ -----------------------------------------------
+|                     body                      |
+|                 display: flex                 |
+|  -------------------------------------------  |
+| |                  section 1                | |
+| |       padding left top right bottom       | |
+| |                 width 100%                | |
+| |              display: no matter           | |
+| |  ---------------------------------------  | |
+| | |                                       | | |
+| | |            section 1 inner            | | |
+| | |              display: flex            | | |
+| | |        specified flex properties      | | |
+| | |           width:100%;height:100%;     | | |
+| | |                                       | | |
+| |  ---------------------------------------  | |
+|  -------------------------------------------  |
+|                                               |
+|  -------------------------------------------  |
+| |                  section 2                | |
+| |       padding left top right bottom       | |
+| |                 width 100%                | |
+| |              display: no matter           | |
+| |  ---------------------------------------  | |
+| | |                                       | | |
+| | |            section 2 inner            | | |
+| | |              display: flex            | | |
+| | |        specified flex properties      | | |
+| | |           width:100%;height:100%;     | | |
+| | |                                       | | |
+| |  ---------------------------------------  | |
+|  -------------------------------------------  |
+|                                               |
+|                       ...                     |
+|  -------------------------------------------  |
+| |                  section n                | |
+| |       padding left top right bottom       | |
+| |                 width 100%                | |
+| |              display: no matter           | |
+| |  ---------------------------------------  | |
+| | |                                       | | |
+| | |            section n inner            | | |
+| | |              display: flex            | | |
+| | |        specified flex properties      | | |
+| | |           width:100%;height:100%;     | | |
+| | |                                       | | |
+| |  ---------------------------------------  | |
+|  -------------------------------------------  |
+|                                               |
+|                                               |
+|                                               |
+ -----------------------------------------------
+
+
+
+
+
+
+*/
 :root{
     --h-button-padding: 15px;
     --h-button-width: 30%;
+    --first-depth-containers-padding:10%;
 }
 
 
@@ -40,10 +102,15 @@ body a {
 
 
 body>*{ /*all 1-depth children*/
-    padding-left: 10%;
-    padding-right: 10%;
+    padding-left: var(--first-depth-containers-padding);
+    padding-right: var(--first-depth-containers-padding);
+    justify-content: center;
 }
 
+body>*>*{/*all 2-depth children i.e. .*-tile*/
+    width: 100%;
+    height: 100%;
+}
 
 .header {
     padding-top:2vh;
@@ -53,7 +120,6 @@ body>*{ /*all 1-depth children*/
     color: white;
     background: #3f89c6;
 
-    justify-content: center;
     align-items: stretch;
 }
 .header *{
@@ -103,16 +169,13 @@ body>*{ /*all 1-depth children*/
 
 
 .services {
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
     background: white;
     padding-top: 10vh;
     padding-bottom: 10vh;
 }
 
 .s-tile {
-    width: 80vw;
+
 
     justify-content: space-around;
     align-items: flex-start;
