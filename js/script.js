@@ -185,19 +185,12 @@
         matchdots(".f-block", ".dot");
 
 
-
-
-
-
-
-
-
-
-
-
     })();
 
 
+    (function() {
+        d.querySelector(".footer-year").insertAdjacentHTML("afterbegin",(new Date).getFullYear() );
+    })();
 
 
 

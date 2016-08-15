@@ -1,8 +1,24 @@
+head,script,link{
+    display: none !important;
+}
+
+html{
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+
 html * {
     padding: 0;
     margin: 0;
     border: 0;
     outline: none;
+
+    font-family: 'Open Sans', sans-serif;
+    
+
 }
 
 body * {
@@ -13,28 +29,33 @@ body * {
 }
 
 body {
-    width: 100vw;
-    overflow-x: hidden;
-    /*bug*/
-    /*developer*/
+    width: 100%;
+   
     display: flex;
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
+
+
 }
 
 body>* {
-    width: 100vw;
+    width: 100%;
     min-height: 10vh;
-    /*developer*/
-    background: yellow;
-    /*developer*/
+
+}
+
+
+body a {
+        color: white;
+    text-decoration: none;
 }
 
 .header {
-    height: 100vh;
+    height: 90vh;
     color: white;
-    background: slategrey;
+    background: slateblue;
+    padding-bottom: 10vh;
 }
 
 .header>.h-tile {
@@ -51,8 +72,14 @@ body>* {
 .h-tile>*:first-child .menu {
     height: 70px;
     width: 70px;
-    background: white;
+    
 }
+
+.menu * {
+    align-items: center;
+}
+
+
 
 .h-buttons {
     justify-content: space-between;
@@ -63,10 +90,14 @@ body>* {
 .h-button {
     min-width: 5vw;
     background: transparent;
+    padding: 20px;
+    border-radius: 5px;
+    width:15vw;
 }
 
 .h-button:hover {
-    background: darkorange;
+    background: slateblue;
+    transition: 0.5s;
 }
 
 .h-row>.p-motto {
@@ -84,9 +115,10 @@ body>* {
 
 .s-tile {
     width: 80vw;
-    height: 50%;
+
     justify-content: space-around;
     align-items: flex-start;
+    flex-wrap: wrap;
 }
 
 .s-tile>* {
@@ -105,7 +137,7 @@ body>* {
 }
 
 .subscribe {
-    background-color: slategrey;
+    background-color: slateblue;
     min-height: 40vh;
     color: white;
     justify-content: center;
@@ -120,7 +152,7 @@ body>* {
 .subscribe>form>* {
     padding: 3vh;
     border-radius: 10px;
-    font-size: 5vh;
+    font-size: 2vh;
 }
 
 .subscribe>form>input {
@@ -128,9 +160,9 @@ body>* {
 }
 
 .subscribe>form>button {
-    background: darkorange;
+    background: white;
     width: 25%;
-    color: white;
+    color: slateblue;
 }
 
 .works {
@@ -182,7 +214,7 @@ body>* {
 }
 
 .w-grid-example>.hidden {
-    background: rgba(255, 127, 0, 0.85);
+    background: slateblue;
     display: flex;
     justify-content: center;
     z-index: 60;
@@ -199,17 +231,27 @@ body>* {
 }
 
 .g-e-btn {
-    margin-top: 20px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    font-size: 2vh;
     display: block;
     text-decoration: none;
-    padding: 20px;
-    border-radius: 10px;
+    padding: 5%;
+    border-radius: 5px;
     background: white;
-    color: rgba(255, 127, 0, 0.75);
+    color: slateblue;
+}
+.g-e-headr{
+    font-size: 2vh;
+}
+.g-e-paragraf{
+    font-size: 1vh;
 }
 
+
+
 .w-grid-example:hover .hidden {
-    opacity: 1;
+    opacity: 0.85;
 }
 
 .w-head {
@@ -227,14 +269,17 @@ body>* {
 
 .w-show-more>* {
     text-decoration: none;
-    color: slategrey;
+    color: slateblue;
 }
 
 .speeches {
     justify-content: center;
     align-items: center;
-    background: slategrey;
+    background: slateblue;
+        color: white;
 }
+
+
 
 .sp-tile {
     width: 60vw;
@@ -260,7 +305,7 @@ body>* {
     position: static;
     display: flex;
     opacity: 1;
-    transition: opacity 2s 0.1s, width 0s;
+    transition: opacity 2s 0.1s, width ;
 }
 
 .sp-tile>.before {
@@ -288,14 +333,15 @@ body>* {
 .sp-leftctrl,
 .sp-rightctrl {
     z-index: 100;
+    color: white;
 }
 
 .faces {
     justify-content: center;
     align-items: center;
     background: white;
-    padding-top: 20vh;
-    padding-bottom: 20vh;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
 }
 
 .f-tile {
@@ -319,6 +365,7 @@ body>* {
     justify-content: space-around;
     align-items: stretch;
     min-height: 80vh;
+    flex-wrap: wrap;
 }
 
 .f-blocks>.f-block {
@@ -336,6 +383,7 @@ body>* {
 .f-block>*:not(.f-about) {
     filter: grayscale(100%);
     -webkit-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
     width: 90%;
     cursor: pointer;
 }
@@ -343,10 +391,11 @@ body>* {
 .f-block:hover>* {
     filter: none;
     -webkit-filter: none;
+    -ms-filter: none;
 }
 
 .f-face {
-    height: 55vh;
+    
     align-items: flex-end;
 }
 
@@ -363,7 +412,7 @@ body>* {
 
 .f-block:hover .f-face>img {
     max-height: 70vh;
-    border-bottom: 10px solid darkorange;
+    border-bottom: 10px solid slateblue;
 }
 
 .f-name {
@@ -375,7 +424,7 @@ body>* {
     padding-bottom: 3vh;
 }
 
-.f-socials a:nth-child(1) .fa-circle {
+.f-socials a:nth-child(1) .fa-circle  {
     color: #3B5998;
 }
 
@@ -391,7 +440,7 @@ body>* {
     align-self: center;
     justify-content: space-around;
     align-items: center;
-    width: 20%;
+
     height: 15px;
     padding-top: 10vh;
     padding-bottom: 5vh;
@@ -417,13 +466,92 @@ body>* {
 .f-dots>.active {
     height: 13px;
     width: 13px;
-    background: darkorange;
+    background: slateblue;
     margin-left: 12px;
     margin-right: 12px;
     border-radius: 50%;
 }
 
 
-/*
-C:\Program Files (x86)\ghc-8.0.1\bin;
-*/
+
+.say{
+    justify-content: center;
+    align-items: center;
+    background: slateblue;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+}
+
+.say-tile{
+    flex-direction: column;
+    width: 80vw;
+}
+.say-tile>*{
+    flex-direction: column;
+}
+.say-tile form {
+    flex-direction: column;
+    align-items: stretch;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+}
+
+.say-tile form>*{
+    margin-top: 3vh;
+}
+
+.say-tile .form-row-short{
+    justify-content: space-between;
+}
+.form-row-short>*:not(button){
+    width: 45%;
+}
+.say-tile .form-row-long{
+    flex-direction: column;
+} 
+
+
+.say-tile form input,.say-tile form textarea,.say-tile form button{
+    padding: 10px;
+    align-self: stretch;
+    border-radius: 10px;
+    resize: none;
+    font-size: 2vh;
+}
+.say-tile form button{
+    background: white;
+    font-size: 2vh;
+    width: 20vw;
+}
+
+
+
+
+
+
+.social-block a:nth-child(1) .fa-circle {
+    color: #3B5998;
+}
+
+.social-block a:nth-child(2) .fa-circle{
+    color: #4099FF;
+}
+.social-block a:nth-child(3) .fa-circle {
+    color: #dd4b39;
+}
+
+
+
+
+
+.footer{
+    justify-content: center;
+    align-items: stretch;
+    background: white;
+}
+.footer-tile{
+    width: 80vw;
+    justify-content: flex-start;
+    align-items: center;
+}
+
