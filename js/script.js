@@ -5,7 +5,7 @@
 
 
 
-            var //vars Start 
+            var //variables Start 
 
                 current = NaN, //nan
                 slides = [],
