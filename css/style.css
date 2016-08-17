@@ -795,6 +795,13 @@ body>*>*{/*all 2-depth children i.e. .*-tile*/
     .footer-tile *{
         display: inline;
     }
+        .subscribe>form>input{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .subscribe>form>button{
+        width: 100%;
+    }
 }
 
 @media screen and  ( max-width: 425px ){

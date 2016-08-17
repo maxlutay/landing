@@ -12,7 +12,7 @@
         var go = w.setInterval(function () {
             console.log("it");
             w.scrollBy(0, k);
-            if (to > from ? w.pageYOffset >= to : w.pageYOffset <= to) { w.clearInterval(go); };
+            if ((to > from ? w.pageYOffset >= to : w.pageYOffset <= to) || w.pageYOffset === w.innerHeight ) { w.clearInterval(go); };
         }, 1);
         //already = true;
         //};
