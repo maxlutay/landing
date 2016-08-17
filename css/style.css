@@ -128,6 +128,35 @@ body>*>*{/*all 2-depth children i.e. .*-tile*/
     height: 100%;
 }
 
+
+
+.h-menu .menu{
+    position: fixed;
+    width: 100%;
+    height:100%;
+    top:0;
+    left: 0;
+    z-index: 500;
+    opacity: 0.95;
+    background: #ec9213;
+
+    transition: 0.5s;
+
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+.h-menu .hidden{
+    transform: translateY(-100%);
+}
+.h-menu .visible{
+    transform: none;
+}
+.h-menu *:not(.menu){
+    z-index: 600;
+}
+
+
 .header {
     padding-top:2vh;
     height: 93vh;
@@ -267,12 +296,6 @@ body>*>*{/*all 2-depth children i.e. .*-tile*/
 
 
 
-
-
-
-
-
-
 .works {
     padding-top: 10vh;
     padding-bottom: 10vh;
@@ -406,77 +429,14 @@ body>*>*{/*all 2-depth children i.e. .*-tile*/
 
 
 
-
-
-
-/*s1236*/
-@media screen and  ( max-width: 9999px ){
-    :root{
-        --w-cols:3;
-        --s-cols:4;
-    }
-}
-
-@media screen and  ( max-width: 1024px ){
-    :root{
-        --w-cols:3;
-        --s-cols:3;
-    }
-}
-
-@media screen and  ( max-width: 768px ){
-    :root{
-        --w-cols:2;
-        --s-cols:2;
-    }
-}
-
-@media screen and  ( max-width: 425px ){
-    :root{
-        --w-cols: 1;
-        --s-cols:1;
-    }
-
-    .subscribe>form>input{
-        width: 100%;
-        margin-bottom: 10px;
-    }
-    .subscribe>form>button{
-        width: 100%;
-    }
-}
-/*e1236*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .speeches {
     justify-content: space-between;
     align-items: center;
     background: #3f89c6;
     color: white;
     padding: 5%;
-    height: 90vh;
+    min-height: 60vh;
+    height: fit-content;
 }
 
 
@@ -522,16 +482,31 @@ body>*>*{/*all 2-depth children i.e. .*-tile*/
 }
 
 .sp-slide>.sp-img {
-    width: 20vmin;
-    height: 20vmin;
+    width: 30vmin;
+    height: 30vmin;
     margin-bottom: 5vh;
     border-radius: 50%;
 }
 
 .sp-slide>.sp-p {
+    font-style: italic;
     margin-bottom: 10vh;
     width: 100%;
 }
+
+.sp-slide>.sp-p::before{
+    content: "\"";
+}
+
+.sp-slide>.sp-p::after{
+
+    content: "\"";
+    margin-right: 5px;
+    display: flex;
+    align-items: flex-end;
+}
+
+
 
 .sp-leftctrl,
 .sp-rightctrl {
@@ -578,20 +553,20 @@ body>*>*{/*all 2-depth children i.e. .*-tile*/
 .f-blocks {
     justify-content: space-around;
     align-items: stretch;
-    min-height: 80vh;
+    min-height: 60vh;
     flex-wrap: wrap;
 }
 
 .f-blocks>.f-block {
     flex-direction: column;
     align-items: center;
-    min-height: 60vh;
-    padding: 4%;
-    width:calc( 100% / var(--s-cols) - 2 * 4% );
+    min-height: 50vh;
+    padding: 2%;
+    width:calc( 100% / var(--s-cols) - 2 * 2% );
 }
 
 .f-block * {
-    transition: 0.5s;
+    transition:all 0.5s;
     justify-content: center;
 }
 
@@ -617,13 +592,15 @@ body>*>*{/*all 2-depth children i.e. .*-tile*/
     height: auto;
     max-height: 75vh;
     border-radius: 10px;
+     transition:all 0.5s;
 }
 
 
 
 .f-block:hover .f-face>img {
-    max-height: 70vh;
+    max-height: 55vh;
     border-bottom: 10px solid #3f89c6;
+    
 }
 
 .f-name {
@@ -735,13 +712,18 @@ body>*>*{/*all 2-depth children i.e. .*-tile*/
     font-size: 2vh;
 }
 .say-tile form button{
-    background: white;
+    background: #3f89c6;
+    color: white;
     font-size: 2.5vh;
     width: fit-content;
     align-self: center;
+    transition: var(--bts-transitions);
 }
 
-
+.say-tile form button:hover{
+    background: white;
+    color: #3f89c6;
+}
 
 
 .social-block{
@@ -767,6 +749,8 @@ body>*>*{/*all 2-depth children i.e. .*-tile*/
     justify-content: center;
     align-items: stretch;
     background: white;
+    padding-top: 3vh;
+    padding-bottom: 2vh;
 }
 .footer-tile{
     width: 80vw;
@@ -774,3 +758,52 @@ body>*>*{/*all 2-depth children i.e. .*-tile*/
     align-items: center;
 }
 
+
+
+
+/*s1236*/
+@media screen and  ( max-width: 9999px ){
+    :root{
+        --w-cols:3;
+        --s-cols:4;
+    }
+}
+
+@media screen and  ( max-width: 1024px ){
+    :root{
+        --w-cols:3;
+        --s-cols:3;
+    }
+}
+
+@media screen and  ( max-width: 768px ){
+    :root{
+        --w-cols:2;
+        --s-cols:2;
+    }
+
+    .footer-tile{
+        justify-content: center;
+        text-align: center;
+    }
+
+    .footer-tile *{
+        display: inline;
+    }
+}
+
+@media screen and  ( max-width: 425px ){
+    :root{
+        --w-cols: 1;
+        --s-cols:1;
+    }
+
+    .subscribe>form>input{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .subscribe>form>button{
+        width: 100%;
+    }
+}
+/*e1236*/

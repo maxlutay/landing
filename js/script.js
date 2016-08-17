@@ -1,5 +1,64 @@
 (function(w, d) {
 
+
+    (function() {
+        //menu
+        var menu = function() {       
+            
+
+            d.querySelector(".h-menu").addEventListener("click",function(e) {
+                e.preventDefault();
+                var el = this.querySelector(".menu");
+                var icon = this.querySelector("i");
+                
+                el.className = el.className.trim();
+
+                if(el.className.indexOf("hidden") > -1 ){
+                    el.className = el.className.replace("hidden","visible");
+                    icon.className = icon.className.replace("bars","times");
+                    return;
+                };
+                if(el.className.indexOf("visible") > -1 ){ 
+                    el.className = el.className.replace("visible","hidden");
+                    icon.className = icon.className.replace("times","bars");
+                    return;
+
+                };
+            });
+        
+        };
+
+        menu();
+
+    })();
+    (function() {
+        // header go-down
+        var down = function() {
+            var windowYScroller = function(from,to) {
+                if(from){ w.scrollTo(0,from);};
+
+                var already = false;
+                var  k = 50 *( to > from ? 1 : -1);
+                if( !already ){
+                    var go = w.setInterval( function() {
+                        console.log(w.pageYOffset);
+                    w.scrollBy(0,k);
+                    if( to > from ? w.pageYOffset >= to : w.pageYOffset <= to ){ w.clearInterval(go); };
+                    },1);
+                    already = true;
+                };
+
+
+            };
+            d.querySelector(".h-go-arrow").parentElement.addEventListener("click",function() {
+                windowYScroller(0,window.innerHeight);
+            });
+        };
+
+        down();
+    })();
+
+
     (function() { //gallery module start
         var slider = function(querystring) {
 
@@ -100,14 +159,16 @@
 
 
 
+            
+
+
+
+
+            slides = d.querySelectorAll(querystring), // no panic, slides in its scope, not in global 
+
+            current = isNaN(current) ? 0 : current
+            
             ;
-
-
-
-
-            slides = d.querySelectorAll(querystring); // no panic, slides in its scope, not in global 
-
-            current = isNaN(current) ? 0 : current;
 
             setCurrent();
 
@@ -133,7 +194,7 @@
 
 
 
-        var gallery = slider(".sp-slide");
+        var gallery = slider(".sp-slide");//chaining(cascade) enabled
 
         d.querySelectorAll(".sp-leftctrl")[0].addEventListener("click", function() {
             gallery.setCurrent("-");
@@ -189,6 +250,7 @@
 
 
     (function() {
+        //footer
         d.querySelector(".footer-year").insertAdjacentHTML("afterbegin",(new Date).getFullYear() );
     })();
 
