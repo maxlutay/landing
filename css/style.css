@@ -132,22 +132,27 @@ body>*>*{/*all 2-depth children i.e. .*-tile*/
 
 .h-menu .menu{
     position: fixed;
-    width: 100%;
-    height:100%;
+    width: 60vw;
+    height:60vh;
     top:0;
     left: 0;
     z-index: 500;
-    opacity: 0.95;
     background: #ec9213;
 
-    transition: 0.5s;
+    padding-top: 20vh;
+    padding-bottom: 20vh;
+    padding-left: 20vw;
+    padding-right: 20vw;
 
-    justify-content: center;
+    transition: 0.5s;
+    
+    flex-direction: column;
+    justify-content: space-around;
     align-content: center;
     align-items: center;
 }
 .h-menu .hidden{
-    transform: translateY(-100%);
+    transform: translateY(-100vh);
 }
 .h-menu .visible{
     transform: none;

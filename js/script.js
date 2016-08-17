@@ -14,11 +14,13 @@
                 el.className = el.className.trim();
 
                 if(el.className.indexOf("hidden") > -1 ){
+                    d.body.style.overflow = "hidden";
                     el.className = el.className.replace("hidden","visible");
                     icon.className = icon.className.replace("bars","times");
                     return;
                 };
                 if(el.className.indexOf("visible") > -1 ){ 
+                    d.body.style.overflow = "";
                     el.className = el.className.replace("visible","hidden");
                     icon.className = icon.className.replace("times","bars");
                     return;
