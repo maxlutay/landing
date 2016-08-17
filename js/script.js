@@ -1,59 +1,82 @@
-(function(w, d) {
+(function (w, d) {
 
+    var windowYScroller = function (to, from, pxpersec) {
+        console.log("ran");
+        console.log(to);
 
-    (function() {
+        if (typeof from === "number" && from >= 0) { w.scrollTo(0, from); };
+
+        //var already = false;
+        var k = (pxpersec || 50) * (to > from ? 1 : -1);
+        //if( !already ){
+        var go = w.setInterval(function () {
+            console.log("it");
+            w.scrollBy(0, k);
+            if (to > from ? w.pageYOffset >= to : w.pageYOffset <= to) { w.clearInterval(go); };
+        }, 1);
+        //already = true;
+        //};
+        console.log(w.pageYOffset);
+
+    };
+
+    (function () {
         //menu
-        var menu = function() {       
-            
+        var menu = function () {
 
-            d.querySelector(".h-menu").addEventListener("click",function(e) {
+
+            d.querySelector(".h-menu").addEventListener("click", function (e) {
                 e.preventDefault();
                 var el = this.querySelector(".menu");
                 var icon = this.querySelector("i");
-                
+
                 el.className = el.className.trim();
 
-                if(el.className.indexOf("hidden") > -1 ){
+                if (el.className.indexOf("hidden") > -1) {
                     d.body.style.overflow = "hidden";
-                    el.className = el.className.replace("hidden","visible");
-                    icon.className = icon.className.replace("bars","times");
-                    return;
+                    el.className = el.className.replace("hidden", "visible");
+                    icon.className = icon.className.replace("bars", "times");
+                    console.log("removed h");
+                    return this;
                 };
-                if(el.className.indexOf("visible") > -1 ){ 
+                if (el.className.indexOf("visible") > -1) {
                     d.body.style.overflow = "";
-                    el.className = el.className.replace("visible","hidden");
-                    icon.className = icon.className.replace("times","bars");
-                    return;
-
+                    el.className = el.className.replace("visible", "hidden");
+                    icon.className = icon.className.replace("times", "bars");
+                    console.log("removed v");
+                    return this;
                 };
+
+
+
+                return this;
+                //return this;
             });
-        
+
+            d.querySelectorAll(".menu a").forEach(function (el, i) {
+
+                el.addEventListener("click", function () {
+                    w.setTimeout(function () {
+                        console.log(d.body.children[i+1].offsetTop);
+                        windowYScroller(d.body.children[i+1].offsetTop,0,60);
+                    }, 100);
+
+
+                });
+            });
+
+
         };
 
         menu();
 
     })();
-    (function() {
+    (function () {
         // header go-down
-        var down = function() {
-            var windowYScroller = function(from,to) {
-                if(from){ w.scrollTo(0,from);};
+        var down = function () {
 
-                var already = false;
-                var  k = 50 *( to > from ? 1 : -1);
-                if( !already ){
-                    var go = w.setInterval( function() {
-                        console.log(w.pageYOffset);
-                    w.scrollBy(0,k);
-                    if( to > from ? w.pageYOffset >= to : w.pageYOffset <= to ){ w.clearInterval(go); };
-                    },1);
-                    already = true;
-                };
-
-
-            };
-            d.querySelector(".h-go-arrow").parentElement.addEventListener("click",function() {
-                windowYScroller(0,window.innerHeight);
+            d.querySelector(".h-go-arrow").parentElement.addEventListener("click", function () {
+                windowYScroller(window.innerHeight, 0);
             });
         };
 
@@ -61,8 +84,8 @@
     })();
 
 
-    (function() { //gallery module start
-        var slider = function(querystring) {
+    (function () { //gallery module start
+        var slider = function (querystring) {
 
 
 
@@ -73,10 +96,10 @@
                 beforeclass = "before",
                 activeclass = "active",
                 afterclass = "after",
-                len = function() {
+                len = function () {
                     return slides.length;
                 },
-                removeArgClassNames = function(arg) {
+                removeArgClassNames = function (arg) {
 
 
                     for (var i = 0, l = len(); i < l; i++) {
@@ -100,7 +123,7 @@
                     return publ;
                 },
 
-                addArgSpacedClassNames = function(from, to, arg) {
+                addArgSpacedClassNames = function (from, to, arg) {
                     var from = from || 0,
                         to = to || 0;
 
@@ -131,7 +154,7 @@
                     return publ;
                 },
 
-                setSlideClasses = function(elmsBeforeClass, elmMainClass, elmsAfterClass) {
+                setSlideClasses = function (elmsBeforeClass, elmMainClass, elmsAfterClass) {
                     if (typeof current === "number" && (!isNaN(current) || current < len())) { //NaN is number
 
                         addArgSpacedClassNames(current, current + 1, elmMainClass);
@@ -142,7 +165,7 @@
 
                     return publ;
                 },
-                setCurrent = function(plusORminus) { //plusORminus is a string
+                setCurrent = function (plusORminus) { //plusORminus is a string
                     if (plusORminus === "+" || plusORminus === "-" || !plusORminus) {
 
                         if (!!plusORminus && plusORminus.indexOf("+") > -1) {
@@ -161,16 +184,16 @@
 
 
 
-            
+
 
 
 
 
             slides = d.querySelectorAll(querystring), // no panic, slides in its scope, not in global 
 
-            current = isNaN(current) ? 0 : current
-            
-            ;
+                current = isNaN(current) ? 0 : current
+
+                ;
 
             setCurrent();
 
@@ -198,35 +221,35 @@
 
         var gallery = slider(".sp-slide");//chaining(cascade) enabled
 
-        d.querySelectorAll(".sp-leftctrl")[0].addEventListener("click", function() {
+        d.querySelectorAll(".sp-leftctrl")[0].addEventListener("click", function () {
             gallery.setCurrent("-");
         });
-        d.querySelectorAll(".sp-rightctrl")[0].addEventListener("click", function() {
+        d.querySelectorAll(".sp-rightctrl")[0].addEventListener("click", function () {
             gallery.setCurrent("+");
         })
     })(); //gallery module end
 
 
-    (function() {
+    (function () {
 
         //f-block
 
-        var matchdots = function(targetsclass, dotsclass) {
+        var matchdots = function (targetsclass, dotsclass) {
             var
 
                 targets = d.querySelectorAll(targetsclass),
                 dots = d.querySelectorAll(dotsclass),
-                match = function() {
+                match = function () {
 
-                    targets.forEach(function(e, i) {
+                    targets.forEach(function (e, i) {
 
-                        e.addEventListener("mouseover", function() {
+                        e.addEventListener("mouseover", function () {
 
                             dots[i].className = "active";
                         });
-                        e.addEventListener("mouseout", function() {
+                        e.addEventListener("mouseout", function () {
 
-                            dots.forEach(function(e) {
+                            dots.forEach(function (e) {
                                 e.className = "dot";
                             });
                         });
@@ -234,7 +257,7 @@
                     });
                 }
 
-            ;
+                ;
 
 
             match();
@@ -251,9 +274,9 @@
     })();
 
 
-    (function() {
+    (function () {
         //footer
-        d.querySelector(".footer-year").insertAdjacentHTML("afterbegin",(new Date).getFullYear() );
+        d.querySelector(".footer-year").insertAdjacentHTML("afterbegin", (new Date).getFullYear());
     })();
 
 
