@@ -1,23 +1,18 @@
 (function (w, d) {
 
     var windowYScroller = function (to, from, pxpersec) {
-        console.log("ran");
-        console.log(to);
 
-        if (typeof from === "number" && from >= 0) { w.scrollTo(0, from); };
+        if (from !== undefined && typeof from === "number" && from > -1) { w.scrollTo(0, from); };
 
-        //var already = false;
-        var k = (pxpersec || 50) * (to > from ? 1 : -1);
-        //if( !already ){
+        var k = (pxpersec || 50) * (to > (from || 0) ? 1 : -1);
+
         var go = w.setInterval(function () {
-            console.log("it");
-            console.log(w.pageYOffset);
+
             w.scrollBy(0, k);
-            if ((to > from ? w.pageYOffset >= to : w.pageYOffset <= to) || w.pageYOffset + w.innerHeight === d.body.clientHeight || w.pageYOffset === 0  ) { w.clearInterval(go); };
+            if ((to > ( from || 0 ) ? w.pageYOffset >= to : w.pageYOffset <= to) || w.pageYOffset + w.innerHeight === d.body.clientHeight || w.pageYOffset === 0  ) { w.clearInterval(go); };
+        
         }, 1);
-        //already = true;
-        //};
-        console.log(w.pageYOffset);
+
 
     };
 
@@ -37,14 +32,14 @@
                     d.body.style.overflow = "hidden";
                     el.className = el.className.replace("hidden", "visible");
                     icon.className = icon.className.replace("bars", "times");
-                    console.log("removed h");
+
                     return this;
                 };
                 if (el.className.indexOf("visible") > -1) {
                     d.body.style.overflow = "";
                     el.className = el.className.replace("visible", "hidden");
                     icon.className = icon.className.replace("times", "bars");
-                    console.log("removed v");
+
                     return this;
                 };
 
@@ -58,7 +53,7 @@
 
                 el.addEventListener("click", function () {
                     w.setTimeout(function () {
-                        console.log(d.body.children[i+1].offsetTop);
+
                         windowYScroller(d.body.children[i+1].offsetTop,0,60);
                     }, 100);
 
@@ -66,6 +61,14 @@
                 });
             });
 
+            d.querySelectorAll(".h-button")[0].addEventListener("click",function() {
+                windowYScroller(d.body.children[6].offsetTop);
+                console.log("ran hire");
+            });
+            d.querySelectorAll(".h-button")[1].addEventListener("click",function() {
+                windowYScroller(d.body.children[3].offsetTop);
+                console.log("ran works");
+            });
 
         };
 
