@@ -1,3 +1,5 @@
-bower_components
+bower_components/*/*
+!bower_components/font-awesome/css
+!bower_components/font-awesome/fonts
 .eslintrc.js
 .vscode
