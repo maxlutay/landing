@@ -11,8 +11,9 @@
         //if( !already ){
         var go = w.setInterval(function () {
             console.log("it");
+            console.log(w.pageYOffset);
             w.scrollBy(0, k);
-            if ((to > from ? w.pageYOffset >= to : w.pageYOffset <= to) || w.pageYOffset === w.innerHeight ) { w.clearInterval(go); };
+            if ((to > from ? w.pageYOffset >= to : w.pageYOffset <= to) || w.pageYOffset + w.innerHeight === d.body.clientHeight || w.pageYOffset === 0  ) { w.clearInterval(go); };
         }, 1);
         //already = true;
         //};
