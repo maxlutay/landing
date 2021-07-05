@@ -9,7 +9,10 @@
         var go = w.setInterval(function () {
 
             w.scrollBy(0, k);
-            if ((to > ( from || 0 ) ? w.pageYOffset >= to : w.pageYOffset <= to) || w.pageYOffset + w.innerHeight === d.body.clientHeight || w.pageYOffset === 0  ) { w.clearInterval(go); };
+            if ( 
+                (to > ( from || 0 ) ? w.pageYOffset >= to : w.pageYOffset <= to) 
+                || (w.pageYOffset + w.innerHeight + 25) >= d.body.clientHeight //quickfix
+                || (w.pageYOffset -25) <= 0  ) { w.clearInterval(go); };
         
         }, 1);
 
